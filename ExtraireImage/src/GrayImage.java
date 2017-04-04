@@ -70,7 +70,7 @@ public class GrayImage extends JPanel {
 	}
 	
 	public double Aire (){
-		return pourcentage = ((double)compteur/(double)((A.getWidth()*A.getHeight())))*100;
+		return pourcentage = ((double)nbpixelsnonblancs/(double)((A.getWidth()*A.getHeight())))*100;
 	}
 	
 	
@@ -86,3 +86,4 @@ public class GrayImage extends JPanel {
     	
 	}
 }
+ge
