@@ -189,10 +189,10 @@ class Polynome3{ // polynome de degré 3
 		}
 	}
 	
-	private double a;
-	private double b;
-	private double c;
-	private double d;
+	private double a; // coefficient de degré 3
+	private double b; // coefficient de degré 2
+	private double c; // coefficient de degré 1
+	private double d; // coefficient de degré 0
 }
 	
 class Restriction{ // restriction d'un polynome de degré 3 sur un intervalle [a,b]
@@ -205,7 +205,7 @@ class Restriction{ // restriction d'un polynome de degré 3 sur un intervalle [a
 			this.b=b;
 		}
 		else{ // si a>=b, la restriction est invalide
-			throw new RuntimeException("Restriction incorrecte");
+			throw new RuntimeException("Intervalle invalide");
 		}
 	}
 	/** retourne le debut de la restriction
@@ -237,7 +237,7 @@ class Restriction{ // restriction d'un polynome de degré 3 sur un intervalle [a
 	}
 	
 	/** fait la somme de la restriction courant avec un reel
-	 * @param un polynome p
+	 * @param un reel
 	 * @return la somme de la restriction courante avec un réel
 	 */
 	public Restriction add(double d){
@@ -245,14 +245,14 @@ class Restriction{ // restriction d'un polynome de degré 3 sur un intervalle [a
 	}
 	
 	/** fait le produit de la restriction courant avec un reel
-	 * @param un polynome p
+	 * @param un reel
 	 * @return le produit de la restriction courante avec un réel
 	 */
 	public Restriction mult(double d){
 		return new Restriction(p.mult(d),a,b);
 	}
 	
-	/** fait l'intégrale de la restriction sur ses valeurs positives
+	/** calcule l'intégrale de la restriction sur ses valeurs positives
 	 * en supposant que le polynome de la restrction est de degré 2
 	 * @return l'intégrale de la restriction sur ses valeurs positives
 	 */
@@ -340,9 +340,9 @@ class Restriction{ // restriction d'un polynome de degré 3 sur un intervalle [a
 		}
 	}
 	
-	private Polynome3 p;
-	private double a;
-	private double b;
+	private Polynome3 p; // polynome
+	private double a; // début de l'intervalle
+	private double b; // fin de l'intervalle
 }
 
 class Spline{
@@ -354,140 +354,184 @@ class Spline{
 		// constructeur à partir d'un chemin
 		public Spline(Chemin c){
 			l=new LinkedList<Restriction>(); // on initialise la liste vide
-			LinkedList<Point3> p=c.get(); // on calcule la liste des Point3 à partir du chemin
-			for(int i=0; i<p.size()-1;i++){ // puis, entre chaque couple de Point3
+			LinkedList<Point3> p=c.get(); // on calcule la liste des points à partir du chemin
+			for(int i=0; i<p.size()-1;i++){ // puis, entre chaque couple de points
 				add(Hermite(p.get(i),p.get(i+1))); // on calcule le polynome interpolant de Hermite
 			}
 		}
-		
+	
+		/** calcule l'intégrale de la spline sur ses valeurs positives
+	 	 * @return l'intégrale de la restriction sur ses valeurs positives
+	 	 */
 		public double integralPos(){
 			double s=0;
 			for (Restriction i:l){
-				s+=i.integralPos();
+				s+=i.integralPos(); // on fait la somme des intégrales de toutes les restrictions de la spline
 			}
 			return s;
 		}
 		
-		public void add(Restriction r){
+		// ajoute une restriction a la spline courante
+		private void add(Restriction r){
 			l.add(r);
 		}
 		
+		/** calcule la restriction correspondant au polynome de hermite entre deux points
+		 * @param deux points a et b tel que a<b
+	 	 * @return le polynome de hermite entre a et b
+	 	 */
 		public static Restriction Hermite(Point3 a, Point3 b){
-			Polynome3 H0=new Polynome3(2,-3,0,1);
-			H0=H0.mult(a.gety());
-			Polynome3 H1=new Polynome3(3,-2,1,0);
-			H1=H1.mult(a.getyprime()).mult(a.getx()-a.gety());
-			Polynome3 H2=new Polynome3(-2,3,0,0);
-			H2=H2.mult(b.gety());
-			Polynome3 H3=new Polynome3(1,-1,0,0);
-			H3=H3.mult(b.getyprime()).mult(a.getx()-a.gety());
-			Polynome3 p=H0.add(H1).add(H2).add(H3);;
-			p=p.transAff(1/(b.getx()-a.getx()),-a.getx()/(b.getx()-a.getx()));
-			return (new Restriction(p,a.getx(),b.getx()));
+			if(a<b){
+				Polynome3 H0=new Polynome3(2,-3,0,1); // on cree le polynome de hermite 0
+				H0=H0.mult(a.gety()); // et on le multiplie par y_a
+				Polynome3 H1=new Polynome3(3,-2,1,0); // on cree le polynome de hermite 1
+				H1=H1.mult(a.getyprime()).mult(b.getx()-a.getx()); // et on le multiplie par yprime_a, puis x_b-x_a
+				Polynome3 H2=new Polynome3(-2,3,0,0); // on cree le polynome de hermite 2
+				H2=H2.mult(b.gety()); // et on le multiplie par y_b
+				Polynome3 H3=new Polynome3(1,-1,0,0); // on cree le polynome de hermite 3
+				H3=H3.mult(b.getyprime()).mult(b.getx()-a.getx()); // et on le multiplie par yprime_b, puis x_b-x_a
+				Polynome3 p=H0.add(H1).add(H2).add(H3); // on fait la somme des 4 polynomes
+				p=p.transAff(1/(b.getx()-a.getx()),-a.getx()/(b.getx()-a.getx())); // et on l'applique à (x-x_0)/(x_1-x_0), soit x * 1/(x_1-x_0) - x_0/(x_1-x_0) 
+				return (new Restriction(p,a.getx(),b.getx())); // et on retourne ce polynome restreint à [x_0, x_1]
+			}
+			else{ // si a>=b, la restriction est invalide
+				throw new RuntimeException("Intervalle invalide");
+			}
 		}
 		
+		/** derive la spline courante
+	  	* @return la derivée de la spline courante
+	  	*/
 		public Spline derive(){
 			Spline d=new Spline();
 			for(Restriction i:l){
-				d.add(i.derive());
+				d.add(i.derive()); // on derive chaque restriction de la spline
 			}
 			return d;
 		}
 		
+		/** fait la somme de la restriction courant avec un reel
+	 	* @param un reel
+	 	* @return la somme de la restriction courante avec un réel
+	 	*/
 		public Spline add(double d){
 			Spline s=new Spline();
 			for(Restriction i:l){
-				s.add(i.add(d));
+				s.add(i.add(d)); // on applique la somme à chaque restriction de la spline
 			}
 			return s;
 		}
 		
+		/** fait le produit de la restriction courant avec un reel
+	 	* @param un reel
+		* @return le produit de la restriction courante avec un réel
+	 	*/
 		public Spline mult(double d){
 			Spline s=new Spline();
 			for(Restriction i:l){
-				s.add(i.mult(d));
+				s.add(i.mult(d)); // on applique le produit à chaque restriction de la spline
 			}
 			return s;
 		}
 		
-		private LinkedList<Restriction> l;
+		private LinkedList<Restriction> l; // liste de restrictions correspondant à la spline
 }
 
 class Point{
 	
+	// contructeur
 	public Point(double x, double y){
 		this.x=x;
 		this.y=y;
 	}
-		
+	
+	/** retourne la distance du point à l'origine
+	 * @return la la distance du point à l'origine
+	 */
 	public double getx(){
 		return x;
 	}
-		
+	
+	/** retourne l'altitude du point
+	 * @return l'altitude du point
+	 */
 	public double gety(){
 		return y;
 	}
 		
-	private double x;
-	private double y;
+	private double x; // distance à l'origine
+	private double y; // altitude
 }
 
 class Point3 extends Point{
 		
+	// constructeur
 	public Point3(double x, double y, double yprime){
 		super(x,y);
 		this.yprime=yprime;
 	}
 	
+	/** retourne la pente du point
+	 * @return la pente du point
+	 */
 	public double getyprime(){
 		return yprime;
 	}
 	
-	private double yprime;
+	private double yprime; // pente
 }
 
 class Chemin{
 	
+	// constructeur
 	public Chemin(String nom){
 
-		File f = new File(nom);
+		File f = new File(nom); // on prend le fichier correspondant à la chaine de caractères
 		LinkedList<Point> l = new LinkedList<Point>();
 		try{
 			Scanner sc=new Scanner(f);
 			double dis;
 			double al;
-			while(sc.hasNext()){
-				dis=sc.nextDouble();
-				al=sc.nextDouble();
-				l.add(new Point(dis,al));
+			while(sc.hasNextDouble()){ // tant qu'il reste encore des réels dans le fichier
+				dis=sc.nextDouble(); // on prend la distance à l'origine
+				al=sc.nextDouble(); // on prend son altitude
+				l.add(new Point(dis,al)); // et on les stocke dans un point qu'on rajoute au chemin
 			}
 		}
 		catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
-		p = new LinkedList<Point3>();
-		p.add(new Point3(l.getFirst().getx(),l.getFirst().gety(),0));
-		for(int i=1; i<l.size()-1;i++){
+		p = new LinkedList<Point3>()
+		p.add(new Point3(l.getFirst().getx(),l.getFirst().gety(),0)); // on met la première pente à 0
+		for(int i=1; i<l.size()-1;i++){ // pour chaque point, on trouve sa pente en fonction des points d'avant et d'après
 			p.add(new Point3(l.get(i).getx(),l.get(i).gety(),(l.get(i+1).gety()-l.get(i-1).gety())/(l.get(i+1).getx()-l.get(i-1).getx())));
 		}
-		p.add(new Point3(l.getLast().getx(),l.getLast().gety(),0));
+		p.add(new Point3(l.getLast().getx(),l.getLast().gety(),0)); // et on met la dernière pente à 0
 	}
 	
-	public double Energie(double a, double b){
-		Spline altitude=new Spline(this);
-		Spline pente=altitude.derive();
-		Spline EInst=pente.mult(a).add(b);
-		return EInst.integralPos();
+	/** calcule l'énergie nécessaire pour un chemin donné
+	 * @param les paramètres a et b tel que E=a*p+b ou E est l'énergie instantanée et p la pente
+	 * @return l'energie totale pour le trajet
+	 */
+	public double Energie(double a, double b){ 
+		Spline altitude=new Spline(this); // on crée une nouvelle spline à partir du chemin courant
+		Spline pente=altitude.derive(); // puis on determine sa derivée pour trouver la pente à chaque point
+		Spline EInst=pente.mult(a).add(b); // et on determine l'energie instantanée à chaque point
+		return EInst.integralPos(); // et enfine, on retourne son intégrale positive
 	}
 	
+	/** affiche le chemin courat ainsi que l'energie requise dans un fichier
+	 * @param le nom du fichier
+	 * @param les paramètres a et b tel que E=a*p+b ou E est l'énergie instantanée et p la pente
+	 */
 	public void put(String nom, double a, double b){
 		try{
 			PrintWriter f = new PrintWriter(nom);
 			for(Point3 i:p){
-				f.println(i.getx() + " " + i.gety() + " " + i.getyprime());
+				f.println(i.getx() + " " + i.gety() + " " + i.getyprime()); // on place chaque élément du chemin dans le fichier
 			}
 			f.println();
-			f.println(Energie(a,b));
+			f.println(Energie(a,b)); // puis on place léenergie requise dans le fichier
 			f.close();
 		}
 		catch(FileNotFoundException e){}
@@ -497,13 +541,13 @@ class Chemin{
 		return p;
 	}
 	
-	private LinkedList<Point3> p;
+	private LinkedList<Point3> p; // liste de points correspondant au chemin
 }
 
 class InterpolationSpline{
 	
-	// arguemnt 1: le fichier d'entree
-	// arguemnt 2: le fichier de sortie (pas forcément nécessaire mais utile pour les tests
+	// argument 1: le fichier d'entree
+	// argument 2: le fichier de sortie (pas forcément nécessaire mais utile pour les tests
 	// arguements 3 et 4: respectivement, a et b tel que E=a*p+b ou E est l'énergie instantanée et p la pente
 	
 	public static void main(String[] args){
