@@ -70,8 +70,10 @@ public class GrayImage extends JPanel {
 	}
 	
 	public double Aire (){
-		return ((double)compteur/(double)((A.getWidth()*A.getHeight())))*100;
+		return pourcentage = ((double)compteur/(double)((A.getWidth()*A.getHeight())))*100;
 	}
+	
+	
     	 // cree une fenetre contenant l'image
     	 JFrame f = new JFrame();
     	 f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
