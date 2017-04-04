@@ -1,3 +1,4 @@
+package ProgrammeInterpolation;
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +24,22 @@ public class DonneesGPS {
 			}
 			distancecumulee = 0;
 			for(int j = 0; j <i; j++){
-				distancecumulee += Math.sqrt(Math.pow((coordonnees[0][j+1] - coordonnees[0][j]),2.0) + Math.pow((coordonnees[1][j+1] - coordonnees[1][j]),2.0));
+				// calcul de la distance cumulée a partir des latitudes et longitudes de deux points successifs
+				double rlat1 = Math.PI * coordonnees[0][j]/180;
+			    double rlat2 = Math.PI * coordonnees[0][j+1]/180;
+			    double rlon1 = Math.PI * coordonnees[1][j]/180;
+			    double rlon2 = Math.PI * coordonnees[1][j+1]/180;
+			 
+			    double theta = coordonnees[1][j]-coordonnees[1][j+1];
+			    double rtheta = Math.PI * theta/180;
+			 
+			    double dist = Math.sin(rlat1) * Math.sin(rlat2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.cos(rtheta);
+			    dist = Math.acos(dist);
+			    dist = dist * 180/Math.PI;
+			    dist = dist * 60 * 1.1515;
+			 
+			    dist = dist * 1.609344;
+			    distancecumulee +=dist;
 			}
 		}
 		catch(FileNotFoundException e){
