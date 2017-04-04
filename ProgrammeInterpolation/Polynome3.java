@@ -48,8 +48,8 @@ class Polynome3{ // polynome de degré 3
 	/** derive le polynome courant
 	 * @return la derivée du polynome courant
 	 */
-	public Polynome2 derive(){
-		return new Polynome2(this.a*3,this.b*2,this.c);
+	public Polynome3 derive(){
+		return new Polynome3(0,this.a*3,this.b*2,this.c);
 	}
 	
 	/** fait la somme du polynome courant avec un réel
