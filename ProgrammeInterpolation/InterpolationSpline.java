@@ -6,6 +6,6 @@ class InterpolationSpline{
 	
 	public static void main(String[] args){
 		Chemin c=new Chemin(args[0]);
-		c.put(args[1], Double.parseDouble(args[2]), Double.parseDouble(args[3]));
+		c.put(args[1], Double.parseDouble(args[2]), -Double.parseDouble(args[3]));
 	}
 }
