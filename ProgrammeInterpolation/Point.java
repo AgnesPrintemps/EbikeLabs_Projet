@@ -20,13 +20,6 @@ class Point{
 		return y;
 	}
 	
-	/** retourne les coordonées cartésiennes du point courant en coordonées polaires
-	 * @return les coordonées cartésiennes du point courant en coordonées polaires
-	 */
-	public Point polToCart(){
-		return new Point(x*Math.cos(y),x*Math.sin(y));
-	}
-	
 	/** retourne la cdistance entre 2 points
 	 * @param les deux points
 	 * @return la distance entre les deux points
