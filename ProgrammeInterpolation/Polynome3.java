@@ -104,7 +104,7 @@ class Polynome3{ // polynome de degré 3
 	 */
 	public double integral(double x0, double x1){
 		if(x0<x1){ // si x0<x1
-			int s=0;
+			double s=0;
 			 // on calcule l'intégrale au point x1 et on soustrait l'intégrale au point x0
 			for(int i=0; i<3; i++){
 				s+=(Math.pow(x1,i+1)-Math.pow(x0,i+1))*param(i)/(i+1);
