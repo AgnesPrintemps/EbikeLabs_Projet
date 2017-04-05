@@ -81,5 +81,8 @@ public class DonneesGPS {
 	    return RayonTerre * (Math.PI/2 - Math.asin( Math.sin(latitude2) * Math.sin(latitude1) + Math.cos(longitude2 - longitude1) * Math.cos(latitude2) * Math.cos(latitude1)));
 
 	}
-
+	
+	public static int getRayonTerre(){
+		return RayonTerre;
+	}
 }
