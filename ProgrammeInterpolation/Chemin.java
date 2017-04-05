@@ -1,43 +1,23 @@
 import java.util.LinkedList;
-import java.util.Scanner;
 import java.io.File;
-import java.io.IOException;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Locale;
 
 class Chemin{
 	
 	// constructeur
 	public Chemin(String nom){
 
-		File f = new File(nom); // on prend le fichier correspondant à la chaine de caractères
+		DonneesGPS d=new DonneesGPS(nom); // on recupere les données GPS
 		LinkedList<Point> l = new LinkedList<Point>(); // les distances à l'origine
 		t = new LinkedList<Point>(); // les paramètres a et b
-		try{
-			double dis=0.0;
-			double alt=0.0;
-			double a=1.0;
-			double b=0.0;
-			Scanner sc=new Scanner(f).useLocale(Locale.US);;
-			while(sc.hasNextLine()){ // tant qu'il reste encore des lignes dans le fichier
-				String temp = sc.nextLine();
-				String[] nums= temp.split(" ");
-				dis=Double.parseDouble(nums[0]); // On récupère la distance à l'origine
-				alt=Double.parseDouble(nums[1]); // On récupère l'altitude
-				l.add(new Point(dis,alt)); // et on les stocke dans un point qu'on rajoute au chemin
-				if(nums.length==4){ // si il y a 4 et non pas 2 paramètres sur la ligne
-					a=Double.parseDouble(nums[2]); // on prend le paramètre a
-					b=Double.parseDouble(nums[3]); // on prend le paramètre b
-				}
-				// sinon, on garde ceux d'avant
-				t.add(new Point(a,b)); // et on les stocke dans un point qu'on rajoute à la liste des paramètres
-			}
-			sc.close();
+		double ltot=0.0;
+		t.add(new Point(ltot,getaltitude(0))); // on commence au point 0.0, à son altitude donnée
+		for(int i=1; i<getAltitude().length;i++){ // puis, pour chaque point
+			ltot+=distance(new Point(getLongitude(i), getLatitude(i)), new Point(getLongitude(i-1), getLatitude(i-1))); // on ajoute la distance entre le point courant et le dernier point pour trouver la distance à l'origine du point
+			l.add(new Point(ltot,getAltitude(i))); // on rajoute à la liste des points un nouveau point indiquant sa distance à l'origine et son altitude
+			t.add(getConditions(new Point(getLongitude(i-1), getLatitude(i-1)),new Point(getLongitude(i), getLatitude(i))) // puis, on récupère les conditions entre les 2 points
 		}
-		catch(FileNotFoundException e){
-			e.printStackTrace();
-		}
+		
 		p = new LinkedList<Point3>();
 		p.add(new Point3(l.getFirst().getx(),l.getFirst().gety(),0)); // on met la première pente à 0
 		for(int i=1; i<l.size()-1;i++){ // pour chaque point, on trouve sa pente en fonction des points d'avant et d'après
