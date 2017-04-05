@@ -1,4 +1,3 @@
-package ProgrammeInterpolation;
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;

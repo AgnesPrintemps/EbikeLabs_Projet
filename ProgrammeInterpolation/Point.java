@@ -42,7 +42,7 @@ class Point{
 	 * 	-p.getx() + p.gety() est l'énergie instantanée nécessaire sur une route d'exactement 45°
 	 */
 	public static Point conditions(Point a, Point b){
-		return new Point(50,0.5) // valeur générique pour l'instant
+		return new Point(50,0.5); // valeur générique pour l'instant
 	}
 	private double x;
 	private double y;

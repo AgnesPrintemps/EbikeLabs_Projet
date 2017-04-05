@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.io.File;
 import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 
 class Chemin{
 	
@@ -11,11 +12,11 @@ class Chemin{
 		LinkedList<Point> l = new LinkedList<Point>(); // les distances à l'origine
 		t = new LinkedList<Point>(); // les paramètres a et b
 		double ltot=0.0;
-		t.add(new Point(ltot,getaltitude(0))); // on commence au point 0.0, à son altitude donnée
-		for(int i=1; i<getAltitude().length;i++){ // puis, pour chaque point
-			ltot+=distance(new Point(getLongitude(i), getLatitude(i)), new Point(getLongitude(i-1), getLatitude(i-1))); // on ajoute la distance entre le point courant et le dernier point pour trouver la distance à l'origine du point
-			l.add(new Point(ltot,getAltitude(i))); // on rajoute à la liste des points un nouveau point indiquant sa distance à l'origine et son altitude
-			t.add(conditions(new Point(getLongitude(i-1), getLatitude(i-1)),new Point(getLongitude(i), getLatitude(i))) // puis, on récupère les conditions entre les 2 points
+		t.add(new Point(ltot,d.getAltitude(0))); // on commence au point 0.0, à son altitude donnée
+		for(int i=1; i<d.getAltitude().length;i++){ // puis, pour chaque point
+			ltot+=Point.distance(new Point(d.getLongitude(i), d.getLatitude(i)), new Point(d.getLongitude(i-1), d.getLatitude(i-1))); // on ajoute la distance entre le point courant et le dernier point pour trouver la distance à l'origine du point
+			l.add(new Point(ltot,d.getAltitude(i))); // on rajoute à la liste des points un nouveau point indiquant sa distance à l'origine et son altitude
+			t.add(Point.conditions(new Point(d.getLongitude(i-1), d.getLatitude(i-1)),new Point(d.getLongitude(i), d.getLatitude(i)))); // puis, on récupère les conditions entre les 2 points
 		}
 		
 		p = new LinkedList<Point3>();
