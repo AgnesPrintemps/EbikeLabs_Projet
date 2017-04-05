@@ -129,19 +129,19 @@ public class ApplicationEbike extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		   
-		    String S1 = T1.getText();
-		    String S2 = T2.getText();
-		    String S3 = T3.getText();
-		    String S4 = T4.getText();
-		    String S5 = T5.getText();
-		    String S6 = T6.getText();
-		    String S7 = T7.getText();
-		    String S8 = T8.getText();
-		    String S9 = T9.getText();
-		    String S10 = T10.getText();
-		    System.out.println("S1 = "+S1+" S2 = "+S2+" S3 = "+S3+" S4 = "+S4 +"S5 = " + S5 + "S6 = " + S6 +"S7 = " + S7 +"S8 = " + S8 +"S9 = " + S9 + "S10 = " + S10);
+		    S1 = T1.getText();
+		    S2 = T2.getText();
+		    S3 = T3.getText();
+		    S4 = T4.getText();
+		    S5 = T5.getText();
+		    S6 = T6.getText();
+		    S7 = T7.getText();
+		    S8 = T8.getText();
+		    S9 = T9.getText();
+		    S10 = T10.getText();
+		    System.out.println("S1 = "+S1+" S2 = "+S2+" S3 = "+S3+" S4 = "+S4 +" S5 = " + S5 + " S6 = " + S6 +" S7 = " + S7 +" S8 = " + S8 +" S9 = " + S9 + "S10 = " + S10);
 		    double P = Puissance();
-		    System.out.println(P);
+		    System.out.println("La puissance nécessaire est de : " + P);
 		}
 	
 	
