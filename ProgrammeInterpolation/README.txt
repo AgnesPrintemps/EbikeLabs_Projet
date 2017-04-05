@@ -4,7 +4,7 @@ Pour utiliser ce programme:
 	- l'altitude
 	- sauf pur la dernière ligne, les paramètres a et b pour la portion du chemin
 	  ou b est la quantité d'énergie nécessaire sur une route parfaitement plate
-	  eet a est la quantité d'énergie nécessaire sur une route d'exactement 45° moins a
+	  eet a est la quantité d'énergie nécessaire sur une route d'exactement 45°
 - compilez InterpolationSpline.java
 - exectutez InterpolationSpline avec:
 	- le nom du fichier contenant les données
