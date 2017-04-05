@@ -23,7 +23,7 @@ class Chemin{
 				if(sc.hasNextDouble()){
 					double a=sc.nextDouble(); // on prend le paramètre a
 					double b=sc.nextDouble(); // on prend le paramètre b
-					t.add(new Point(a,b)); // et on les stocke dans un point qu'on rajoute à la liste des paramètres
+					t.add(new Point(a-b,b)); // et on les stocke dans un point qu'on rajoute à la liste des paramètres
 				}
 			}
 		/*}
