@@ -13,5 +13,12 @@ class Point3 extends Point{
 		return yprime;
 	}
 	
+	/** retourne les coordonées cartésiennes du point courant en coordonées polaires
+	 * @return les coordonées cartésiennes du point courant en coordonées polaires
+	 */
+	public Point3 polToCart(){
+		return new Point3(getx()*getz(),gety()*getz(),getz()-DonneesGPS.getRayonTerre());
+	}
+	
 	private double yprime; // pente
 }
