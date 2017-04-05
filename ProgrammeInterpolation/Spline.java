@@ -39,7 +39,7 @@ class Spline{
 			if(a.getx()<b.getx()){
 				Polynome3 H0=new Polynome3(2,-3,0,1); // on cree le polynome de hermite 0
 				H0=H0.mult(a.gety()); // et on le multiplie par y_a
-				Polynome3 H1=new Polynome3(3,-2,1,0); // on cree le polynome de hermite 1
+				Polynome3 H1=new Polynome3(1,-2,1,0); // on cree le polynome de hermite 1
 				H1=H1.mult(a.getyprime()).mult(b.getx()-a.getx()); // et on le multiplie par yprime_a, puis x_b-x_a
 				Polynome3 H2=new Polynome3(-2,3,0,0); // on cree le polynome de hermite 2
 				H2=H2.mult(b.gety()); // et on le multiplie par y_b
