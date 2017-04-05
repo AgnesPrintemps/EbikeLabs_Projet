@@ -10,7 +10,7 @@ public class DonneesGPS {
 	private double[] altitude;
 	private double distancecumulee;
 	private int TailleEchantillon;
-	private final int RayonTerre = 6378000; // en mètres
+	private static final int RayonTerre = 6378000; // en mètres
 	
 	public DonneesGPS(String path){
 		File f = new File(path);
@@ -85,4 +85,5 @@ public class DonneesGPS {
 	public static int getRayonTerre(){
 		return RayonTerre;
 	}
+
 }

@@ -12,11 +12,12 @@ class Chemin{
 		LinkedList<Point> l = new LinkedList<Point>(); // les distances à l'origine
 		t = new LinkedList<Point>(); // les paramètres a et b
 		double ltot=0.0;
-		t.add(new Point(ltot,d.getAltitude(0))); // on commence au point 0.0, à son altitude donnée
-		for(int i=1; i<d.getAltitude().length;i++){ // puis, pour chaque point
+		l.add(new Point(ltot,d.getAltitude(0))); // on commence au point 0.0, à son altitude donnée
+		for(int i=1; i<d.getTailleEchantillon()-1;i++){ // puis, pour chaque point
 			ltot+=Point.distance(new Point(d.getLongitude(i), d.getLatitude(i)), new Point(d.getLongitude(i-1), d.getLatitude(i-1))); // on ajoute la distance entre le point courant et le dernier point pour trouver la distance à l'origine du point
 			l.add(new Point(ltot,d.getAltitude(i))); // on rajoute à la liste des points un nouveau point indiquant sa distance à l'origine et son altitude
-			t.add(Point.conditions(new Point(d.getLongitude(i-1), d.getLatitude(i-1)),new Point(d.getLongitude(i), d.getLatitude(i)))); // puis, on récupère les conditions entre les 2 points
+			Segment s=new Segment(new Point(d.getLongitude(i-1), d.getLatitude(i-1)),new Point(d.getLongitude(i), d.getLatitude(i))); // puis, on crée un segment entre ces points
+			t.add(s.parametres()); // et on ajoute ses paramètres
 		}
 		
 		p = new LinkedList<Point3>();
@@ -46,7 +47,7 @@ class Chemin{
 		try{
 			PrintWriter f = new PrintWriter(nom);
 			for(Point3 i:p){
-				f.println(i.getx() + " " + i.gety() + " " + i.getyprime()); // on place chaque élément du chemin dans le fichier
+				f.println(i.getx() + " " + i.gety() + " " + i.getz()); // on place chaque élément du chemin dans le fichier
 			}
 			f.close();
 			System.out.println(Energie()); // puis on affiche l'énergie requise
