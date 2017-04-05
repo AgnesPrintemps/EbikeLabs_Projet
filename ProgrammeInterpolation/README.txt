@@ -12,4 +12,6 @@ Pour utiliser ce programme:
 	- le nom du fichier dans lequel vous voulez afficher les pentes
 
 Puis, le terminal affichera l'energie requise au cours de chemin
-et le fichier cible aura la pente et l'altitude à chaque point du traje
+et le fichier cible aura la pente et l'altitude à chaque point du trajet
+
+Point.java contient une fonction polToCart() qui donne les coordonées cartésiennes d'un point en coordonées polaires
