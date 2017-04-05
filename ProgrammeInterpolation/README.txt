@@ -1,14 +1,7 @@
 Pour utiliser ce programme:
-- créez un fichier .txt avec sur chaque ligne:
-	- la distance
-	- l'altitude
-	- sauf pur la dernière ligne, les paramètres a et b pour la portion du chemin à venir
-	  ou b est la quantité d'énergie nécessaire sur une route d'exactement 45°
-	  et b est la quantité d'énergie nécessaire sur une route parfaitement plate
-	  (ces paramètres sont à estimer avec la vitesse et la direction du vent, les conditons du sol, etc)
 - compilez InterpolationSpline.java
 - exectutez InterpolationSpline avec:
-	- le nom du fichier contenant les données
+	- le nom du fichier contenant les données GPS
 	- le nom du fichier dans lequel vous voulez afficher les pentes
 
 Puis, le terminal affichera l'energie requise au cours de chemin
