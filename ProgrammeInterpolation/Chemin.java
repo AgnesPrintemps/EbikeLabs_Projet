@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Locale;
 
 class Chemin{
 	
@@ -12,17 +13,17 @@ class Chemin{
 
 		File f = new File(nom); // on prend le fichier correspondant à la chaine de caractères
 		LinkedList<Point> l = new LinkedList<Point>();
-		try{
-			Scanner sc=new Scanner(f);
+		//try{
+			Scanner sc=new Scanner(System.in).useLocale(Locale.US);
 			while(sc.hasNextDouble()){ // tant qu'il reste encore des réels dans le fichier
 				double dis=sc.nextDouble(); // on prend la distance à l'origine
 				double al=sc.nextDouble(); // on prend son altitude
-				l.add(new Point(dis,al); // et on les stocke dans un point qu'on rajoute au chemin
+				l.add(new Point(dis,al)); // et on les stocke dans un point qu'on rajoute au chemin
 			}
-		}
+		/*}
 		catch(FileNotFoundException e){
 			e.printStackTrace();
-		}
+		}*/
 		p = new LinkedList<Point3>();
 		p.add(new Point3(l.getFirst().getx(),l.getFirst().gety(),0)); // on met la première pente à 0
 		for(int i=1; i<l.size()-1;i++){ // pour chaque point, on trouve sa pente en fonction des points d'avant et d'après
@@ -52,6 +53,7 @@ class Chemin{
 			for(Point3 i:p){
 				f.println(i.getx() + " " + i.gety() + " " + i.getyprime()); // on place chaque élément du chemin dans le fichier
 			}
+			f.close();
 			System.out.println(Energie(a,b)); // puis on affiche l'énergie requise
 		}
 		catch(FileNotFoundException e){}
