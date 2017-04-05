@@ -15,12 +15,13 @@ public class CalculDePuissance {
 
 public static double CalculDeCx(){
 	double Cx;
-	double f = LectureClavier.lireDouble("\nEntrez le coeff du frottement : ");
+	double f = LectureClavier.lireDouble("\nEntrez le coeff du frottement en pourcentage : ");
 	double p = LectureClavier.lireDouble("\nEntrez pente de la route en pourcentage : ");
 	double W = CalculPoids();
-	double Vs = LectureClavier.lireDouble("\nEntrez la vitesse limitee en m/s: ");
+	double Vs = LectureClavier.lireDouble("\nEntrez la vitesse limitee en km/h: ");
 	
-	Cx = -324*(f+p)*W/250/(Vs*Vs);
+	Cx = 324*(f+p)*W/250/(Vs*Vs);
+	System.out.println("Le coeff de Cx vaut  : " + Cx);
 	return Cx;
 }	
 	
@@ -37,6 +38,7 @@ public static double ResDuPesanteur(){
 	double m = CalculPoids();
 	double N = m*g;
 	double p = LectureClavier.lireDouble("\nEntrez pente de la route en pourcentage : ");
+	System.out.println("La résistance du pesanteur vaut : " + N*p);
 	return N*p;
 }	
 	
@@ -45,6 +47,7 @@ public static double ResDeLair(){
 	double massevolu = 1.292*273.15/(273.15+T);
 	double airefron = LectureClavier.lireDouble("\nEntrez l'aire frontale en m2 : ");
 	double Cx = CalculDeCx();
+	System.out.println("La résistance de l'air vaut : " + 0.5*massevolu*airefron*Cx);
 	return 0.5*massevolu*airefron*Cx;
 }
 	
@@ -52,6 +55,7 @@ public static double ResDeFrottement(){
 	double m = CalculPoids();
 	double N = m*g;
 	double f = LectureClavier.lireDouble("\nEntrez le coeff du frottement : ");
+	System.out.println("La résistance de frottement vaut : " + N*f);
 	return N*f;
 }	
 	
