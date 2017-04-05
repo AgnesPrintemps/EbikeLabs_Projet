@@ -14,12 +14,10 @@ class Chemin{
 		LinkedList<Point> l = new LinkedList<Point>();
 		try{
 			Scanner sc=new Scanner(f);
-			double dis;
-			double al;
 			while(sc.hasNextDouble()){ // tant qu'il reste encore des réels dans le fichier
-				dis=sc.nextDouble(); // on prend la distance à l'origine
-				al=sc.nextDouble(); // on prend son altitude
-				l.add(new Point(dis,al)); // et on les stocke dans un point qu'on rajoute au chemin
+				double dis=sc.nextDouble(); // on prend la distance à l'origine
+				double al=sc.nextDouble(); // on prend son altitude
+				l.add(new Point(dis,al); // et on les stocke dans un point qu'on rajoute au chemin
 			}
 		}
 		catch(FileNotFoundException e){
