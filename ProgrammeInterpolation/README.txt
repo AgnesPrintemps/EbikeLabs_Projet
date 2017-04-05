@@ -10,3 +10,5 @@ Pour utiliser ce programme:
 
 Puis, le terminal affichera l'energie requise au cours de chemin
 et le fichier cible aura la pente et l'altitude à chaque point du trajet
+
+!!! Pour l'instant, le scanner ne marche pas: il faut taper les données directement sur la console après avoir executé le ficier, et taper n'importe quelle letter quand on a fini.
