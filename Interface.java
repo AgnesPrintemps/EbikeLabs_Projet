@@ -1,13 +1,10 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +12,10 @@ import javax.swing.JTextField;
 
 public class ApplicationEbike extends JFrame implements ActionListener{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final double g = 9.81;
 	private JTextField T1;
 	private JTextField T2;	
@@ -139,7 +140,6 @@ public class ApplicationEbike extends JFrame implements ActionListener{
 		    S8 = T8.getText();
 		    S9 = T9.getText();
 		    S10 = T10.getText();
-		    System.out.println("S1 = "+S1+" S2 = "+S2+" S3 = "+S3+" S4 = "+S4 +" S5 = " + S5 + " S6 = " + S6 +" S7 = " + S7 +" S8 = " + S8 +" S9 = " + S9 + "S10 = " + S10);
 		    double P = Puissance();
 		    System.out.println("La puissance nécessaire est de : " + P);
 		}
@@ -160,7 +160,7 @@ public class ApplicationEbike extends JFrame implements ActionListener{
 		double m = Double.parseDouble(S4);
 		double N = m*g;
 		double p = Double.parseDouble(S6);
-		System.out.println("La résistance du pesanteur vaut : " + N*p);
+		System.out.println("La résistance de pesanteur vaut : " + N*p);
 		return N*p;
 	}	
 		
