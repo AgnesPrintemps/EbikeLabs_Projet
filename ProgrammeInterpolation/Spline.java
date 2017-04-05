@@ -89,5 +89,24 @@ class Spline{
 			return s;
 		}
 		
+		public void affiche(){
+			for(Restriction i:l){
+				i.affiche();
+			}
+		}
+		
+		public Spline app(LinkedList<Point> p){
+			if(l.size()==p.size()){
+				Spline s=new Spline();
+				for(int i=0;i<l.size();i++){
+					s.add(l.get(i).mult(p.get(i).getx()).add(p.get(i).gety()));
+				}
+				return s;
+			}
+			else{
+				throw new RuntimeException("Nombre de paramètres incorrects");
+			}
+		}
+		
 		private LinkedList<Restriction> l; // liste de restrictions correspondant à la spline
 }

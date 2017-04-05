@@ -6,20 +6,27 @@ class Point{
 		this.y=y;
 	}
 	
-	/** retourne la distance du point à l'origine
-	 * @return la la distance du point à l'origine
+	/** retourne la coordonee x du point
+	 * @return la coordonee x du point
 	 */
 	public double getx(){
 		return x;
 	}
 	
-	/** retourne l'altitude du point
-	 * @return l'altitude du point
+	/** retourne la coordonée y du point
+	 * @return la coordonee x du point
 	 */
 	public double gety(){
 		return y;
 	}
+	
+	/** retourne les coordonées cartésiennes du point courant en coordonées polaires
+	 * @return les coordonées cartésiennes du point courant en coordonées polaires
+	 */
+	public Point polToCart(){
+		return new Point(x*Math.cos(y),x*Math.sin(y));
+	}
 		
-	private double x; // distance à l'origine
-	private double y; // altitude
+	private double x;
+	private double y;
 }

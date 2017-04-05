@@ -91,8 +91,8 @@ class Polynome3{ // polynome de degré 3
 	 * @return l'image de x par le polynome courant
 	 */
 	public double apply(double x){
-		int s=0;
-		for(int i=0; i<3; i++){
+		double s=param(0);
+		for(int i=1; i<3; i++){
 			s+=Math.pow(x,i)*param(i);
 		}
 		return s;
@@ -202,8 +202,12 @@ class Polynome3{ // polynome de degré 3
 		}
 	}
 	
+	public void affiche(){
+		System.out.println(a + "x^3 + " + b + "x^2 + " + c + "x + " + d);
+	}
+	
 	private double a; // coefficient de degré 3
 	private double b; // coefficient de degré 2
 	private double c; // coefficient de degré 1
-	private double d; // coefficient de degré 0
+	private double d; // coefficient de degré 0 
 }

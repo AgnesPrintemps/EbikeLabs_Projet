@@ -1,4 +1,3 @@
-
 class Point3 extends Point{
 		
 	// constructeur

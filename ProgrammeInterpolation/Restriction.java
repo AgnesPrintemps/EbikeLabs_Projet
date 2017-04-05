@@ -143,6 +143,12 @@ class Restriction{ // restriction d'un polynome de degré 3 sur un intervalle [a
 		}
 	}
 	
+	public void affiche(){
+			System.out.println("[" + a + " " + b + "]");
+			p.affiche();
+			System.out.println();
+		}
+	
 	private Polynome3 p; // polynome
 	private double a; // début de l'intervalle
 	private double b; // fin de l'intervalle
