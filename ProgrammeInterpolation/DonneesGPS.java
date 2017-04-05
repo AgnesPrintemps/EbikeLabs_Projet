@@ -10,6 +10,7 @@ public class DonneesGPS {
 	private double[][] coordonnees;
 	private double[] altitude;
 	private double distancecumulee;
+	private final int RayonTerre = 6378000; // en mètres
 	
 	public DonneesGPS(String nom){
 		File f = new File(nom);
@@ -25,21 +26,7 @@ public class DonneesGPS {
 			distancecumulee = 0;
 			for(int j = 0; j <i; j++){
 				// calcul de la distance cumulée a partir des latitudes et longitudes de deux points successifs
-				double rlat1 = Math.PI * coordonnees[0][j]/180;
-			    double rlat2 = Math.PI * coordonnees[0][j+1]/180;
-			    double rlon1 = Math.PI * coordonnees[1][j]/180;
-			    double rlon2 = Math.PI * coordonnees[1][j+1]/180;
-			 
-			    double theta = coordonnees[1][j]-coordonnees[1][j+1];
-			    double rtheta = Math.PI * theta/180;
-			 
-			    double dist = Math.sin(rlat1) * Math.sin(rlat2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.cos(rtheta);
-			    dist = Math.acos(dist);
-			    dist = dist * 180/Math.PI;
-			    dist = dist * 60 * 1.1515;
-			 
-			    dist = dist * 1.609344;
-			    distancecumulee +=dist;
+				distancecumulee += Distance(coordonnees[0][j],coordonnees[1][j],coordonnees[0][j+1],coordonnees[1][j+1]);
 			}
 		}
 		catch(FileNotFoundException e){
@@ -58,5 +45,20 @@ public class DonneesGPS {
 	
 	public double getDistance() {
 		return distancecumulee;
+	}
+	//Conversion des degrés en radian
+	public double convertRad(double angle){
+	        return (Math.PI * angle)/180;
+	}
+
+	// Calcul de distance (en mètres) entre deux points en coordonnées GPS
+	public double Distance(double lat_1, double long_1, double lat_2, double long_2){	 
+	    double latitude1 = convertRad(lat_1);
+	    double longitude1 = convertRad(long_1);
+	    double latitude2 = convertRad(lat_2);
+	    double longitude2 = convertRad(long_2);
+	     
+	    return RayonTerre * (Math.PI/2 - Math.asin( Math.sin(latitude2) * Math.sin(latitude1) + Math.cos(longitude2 - longitude1) * Math.cos(latitude2) * Math.cos(latitude1)));
+
 	}
 }
