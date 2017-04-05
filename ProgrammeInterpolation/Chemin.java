@@ -15,7 +15,7 @@ class Chemin{
 		for(int i=1; i<getAltitude().length;i++){ // puis, pour chaque point
 			ltot+=distance(new Point(getLongitude(i), getLatitude(i)), new Point(getLongitude(i-1), getLatitude(i-1))); // on ajoute la distance entre le point courant et le dernier point pour trouver la distance à l'origine du point
 			l.add(new Point(ltot,getAltitude(i))); // on rajoute à la liste des points un nouveau point indiquant sa distance à l'origine et son altitude
-			t.add(getConditions(new Point(getLongitude(i-1), getLatitude(i-1)),new Point(getLongitude(i), getLatitude(i))) // puis, on récupère les conditions entre les 2 points
+			t.add(conditions(new Point(getLongitude(i-1), getLatitude(i-1)),new Point(getLongitude(i), getLatitude(i))) // puis, on récupère les conditions entre les 2 points
 		}
 		
 		p = new LinkedList<Point3>();
