@@ -26,7 +26,24 @@ class Point{
 	public Point polToCart(){
 		return new Point(x*Math.cos(y),x*Math.sin(y));
 	}
-		
+	
+	/** retourne la cdistance entre 2 points
+	 * @param les deux points
+	 * @return la distance entre les deux points
+	 */
+	public static double distance(Point a, Point b){
+		return (Math.sqrt(Math.pow(a.getx()-b.getx(),2)+Math.pow(a.gety()-b.gety(),2)));
+	}
+	
+	/** retourne les conditions d'une route
+	 * @param les deux de la route
+	 * @return un point p correspondant aux conditions de la route tel que
+	 *	-p.gety() est l'énergie instantanée nécessaire sur une route d'exactement 45°
+	 * 	-p.getx() + p.gety() est l'énergie instantanée nécessaire sur une route d'exactement 45°
+	 */
+	public static Point conditions(Point a, Point b){
+		return new Point(50,0.5) // valeur générique pour l'instant
+	}
 	private double x;
 	private double y;
 }
