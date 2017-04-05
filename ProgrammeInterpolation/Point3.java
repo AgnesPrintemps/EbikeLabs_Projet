@@ -13,10 +13,10 @@ class Point3 extends Point{
 		return yprime;
 	}
 	
-	/** retourne les coordonées cartésiennes du point courant en coordonées polaires
-	 * @return les coordonées cartésiennes du point courant en coordonées polaires
+	/** retourne les coordonées cartésiennes du point courant en coordonées sphériques
+	 * @return les coordonées cartésiennes du point courant en coordonées sphériques
 	 */
-	public Point3 polToCart(){
+	public Point3 spherToCart(){
 		return new Point3(getx()*getz(),gety()*getz(),getz()-DonneesGPS.getRayonTerre());
 	}
 	
