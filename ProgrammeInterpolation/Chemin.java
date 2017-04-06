@@ -14,13 +14,16 @@ class Chemin{
 		t = new LinkedList<Point>(); // les paramètres a et b
 		double ltot=0.0;
 		l.add(new Point(ltot,d.getAltitude(0))); // on commence au point 0.0, à son altitude donnée
+		
 		Vent v=new Vent(1,0); // on prend en compte le vent (a modifier plus tard)
 		Cycliste c=new Cycliste(); // on prend en compte le cycliste (a modifier plus tard)
-		Velo b=new Velo: // on prend en compte le velo (a modifier plus tard)
+		Velo b=new Velo(); // on prend en compte le velo (a modifier plus tard)
+		double t=15; // on prend en compte la température (a modifier plus tard)
+		
 		for(int i=1; i<d.getTailleEchantillon()-1;i++){ // puis, pour chaque point
 			ltot+=Point.distance(new Point(d.getLongitude(i), d.getLatitude(i)), new Point(d.getLongitude(i-1), d.getLatitude(i-1))); // on ajoute la distance entre le point courant et le dernier point pour trouver la distance à l'origine du point
 			l.add(new Point(ltot,d.getAltitude(i))); // on rajoute à la liste des points un nouveau point indiquant sa distance à l'origine et son altitude
-			Segment s=new Segment(new Point(d.getLongitude(i-1), d.getLatitude(i-1)),new Point(d.getLongitude(i), d.getLatitude(i)), v, c ,b); // puis, on crée un segment entre ces points
+			Segment s=new Segment(new Point(d.getLongitude(i-1), d.getLatitude(i-1)),new Point(d.getLongitude(i), d.getLatitude(i)), v, c , b, t); // puis, on crée un segment entre ces points
 			t.add(s.parametres()); // et on ajoute ses paramètres
 		}
 		
