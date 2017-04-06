@@ -1,4 +1,4 @@
-import package GestionVent;
+import GestionVent;
 import java.util.LinkedList;
 import java.io.File;
 import java.io.PrintWriter;
