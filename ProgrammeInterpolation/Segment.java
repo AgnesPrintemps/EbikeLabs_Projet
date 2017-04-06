@@ -4,10 +4,12 @@ class Segment{
 	private static final double E_0; // energie requise pour un mètre de pente nulle avec des conditions de base
 	
 	// constructeur du segment à partir des point de départ et d'arivée
-	public Segment(Point a, Point b, Vent v){
+	public Segment(Point a, Point b, Vent v, Cycliste c, Velo b){
 		debut=a;
 		fin=b;
 		vent=v;
+		cycliste=c;
+		velo=b;
 	}
 	
 	/** retourne les paramètres
@@ -23,6 +25,8 @@ class Segment{
 	private Point debut;
 	private Point fin;
 	private Vent vent;
+	private Cycliste cycliste;
+	private Velo velo;
 	
 	// Plus tard, les paramètres de la route dépendront des conditions, que l'on déterminera en fonction des coordonées de départ et d'arivée
 }
