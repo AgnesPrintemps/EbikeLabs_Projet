@@ -11,7 +11,7 @@ class Segment{
 		temperature=t;
 	}
 	
-	/** retourne les paramètres
+	/** retourne les paramètres de la route
 	 * @param les deux de la route
 	 * @return un point p correspondant aux conditions de la route tel que
 	 *	-p.gety() est l'énergie instantanée nécessaire sur une route d'exactement 45°
@@ -22,8 +22,8 @@ class Segment{
 		double f = getFrottement();
 		double m = cycliste.getPoids()+velo.getPoids();
 		double Vs = velo.getVLim();
-		double Cxa = m/250/(Vs*Vs);
-		double Cxb = 324*f*Cxa;
+		double Cxa = 324*m/250/(Vs*Vs);
+		double Cxb = f*Cxa;
 		
 		double resPes = m*g;
 		
@@ -40,14 +40,15 @@ class Segment{
 		double Frb = resAirb+resFrot;
 		double vitesse = 12;
 		
-		return new Point(Fra*vitesse,Frb*vitesse); // valeur générique pour l'instant, on changera en fonction du vent
+		return new Point(Fra*vitesse,Frb*vitesse);
 	}
 	
+	/** retourne le coefficient de frottement de l'air de al route en fonction du vent
+	 * @return le coefficient de frottement de l'air
+	 */
 	public double getFrottement(){
 		 return 0.01; // valeur arbitraire
-	 }
-	 
-	 
+	}
 	
 	private Point debut;
 	private Point fin;
