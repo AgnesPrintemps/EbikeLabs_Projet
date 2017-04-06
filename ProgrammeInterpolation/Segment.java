@@ -1,6 +1,6 @@
 class Segment{
 	
-	private static final double E_1=50; // energie requise pour un mètre de pente unité avec des conditions de base (valeur arbitraire)
+	private static final double E_1=50.0; // energie requise pour un mètre de pente unité avec des conditions de base (valeur arbitraire)
 	private static final double E_0=0.5; // energie requise pour un mètre de pente nulle avec des conditions de base (valeur arbitraire)
 	
 	// constructeur du segment à partir des point de départ et d'arivée
