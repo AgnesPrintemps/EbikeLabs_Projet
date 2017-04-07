@@ -2,12 +2,11 @@ class Segment{
 	
 	
 	// constructeur du segment à partir des point de départ et d'arivée
-	public Segment(Point a, Point b, Vent v, Cycliste c, Velo b, double t){
+	public Segment(Point a, Point b, Vent v, Cycliste c, double t){
 		debut=a;
 		fin=b;
 		vent=v;
 		cycliste=c;
-		velo=b;
 		temperature=t;
 	}
 	
@@ -20,8 +19,8 @@ class Segment{
 	public Point parametres(){
 		
 		double f = getFrottement();
-		double m = cycliste.getPoids()+velo.getPoids();
-		double Vs = velo.getVLim();
+		double m = cycliste.getPoids()
+		double Vs = cycliste.getVLim();
 		double Cxa = 324*m/250/(Vs*Vs);
 		double Cxb = f*Cxa;
 		
@@ -54,7 +53,6 @@ class Segment{
 	private Point fin;
 	private Vent vent;
 	private Cycliste cycliste;
-	private Velo velo;
 	private double temperature;
 	private static final double g = 9.81;
 	
