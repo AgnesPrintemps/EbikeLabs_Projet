@@ -8,14 +8,22 @@ public class Vent {
 	
 	public Vent (int d, int f){
 		switch(d){
-		case 1 : direction = "Nord"; break;
-		case 2 : direction = "Nord-Ouest"; break;
-		case 3 : direction = "Ouest"; break;
-		case 4 : direction = "Sud_Ouest"; break;
-		case 5 : direction = "Sud"; break;
-		case 6 : direction = "Sud-Est"; break;
-		case 7 : direction = "Est"; break;
-		case 8 : direction = "Nord-Est"; break;
+			case 1 : direction = "Nord"; break;
+			case 2 : direction = "Nord-Nord-Ouest"; break;
+			case 3 : direction = "Nord-Ouest"; break;
+			case 4 : direction = "Ouest-Nord-Ouest"; break; // par conevntion, on dit comme ça
+			case 5 : direction = "Ouest"; break;
+			case 6 : direction = "Ouest-Sud-Ouest"; break;
+			case 7 : direction = "Sud-Ouest"; break;
+			case 8 : direction = "Sud-Sud-Ouest"; break;
+			case 9 : direction = "Sud"; break;
+			case 10 : direction = "Sud-Sud-Est"; break;
+			case 11 : direction = "Sud-Est"; break;
+			case 12 : direction "Est-Sud-Est"; break;
+			case 13 : direction = "Est"; break;
+			case 13 : direction = "Est-Nord-Est"; break;
+			case 14 : direction = "Nord-Est"; break;
+			case 15 : direction = "Nord-Nord-Est"; break;
 		}
 		force =f;
 	}
