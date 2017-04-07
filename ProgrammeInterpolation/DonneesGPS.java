@@ -85,5 +85,16 @@ public class DonneesGPS {
 	public static int getRayonTerre(){
 		return RayonTerre;
 	}
-
+	
+	// a partir de la liste de coordonées sphériques, courante, retourne une liste de coordonées cartésienne
+	public static double[][] spherToCart(double[][] s){
+		double[][] c=new double[3][100];
+		for (int i=0; i<100; i++){
+			c[1][i]=s[1][i]*RayonTerre;
+			c[2][i]=s[2][i]*RayonTerre;
+			c[3][i]=c[3][i]-RayonTerre;
+		}
+		
+	}
+	
 }
