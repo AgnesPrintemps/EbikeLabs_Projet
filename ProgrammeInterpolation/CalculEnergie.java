@@ -25,6 +25,8 @@ class CalculEnergie{
 		double poidsc=sc.nextDouble();
 		System.out.println("Entrez la taille du cycliste");
 		double taille=sc.nextDouble();
+		System.out.println("Entrez l'aire frontale du cycliste");
+		double aire=sc.nextDouble();
 		System.out.println("Entrez le poids du vélo");
 		double poidsv=sc.nextDouble();
 		System.out.println("Entrez la vitesse maximale du vélo");
@@ -32,7 +34,7 @@ class CalculEnergie{
 		System.out.println("Entrez la batterie du vélo");
 		double bat=sc.nextDouble();
 		Velo velo=new Velo(poidsv,vmax,bat); // le vélo
-		Cycliste cycliste=new Cycliste(nom,poidsc,velo,taille); // le cycliste
+		Cycliste cycliste=new Cycliste(nom,poidsc,velo,taille,aire); // le cycliste
 		
 		Chemin c=new Chemin(args[0], v, cycliste, t);
 		c.put(args[1]);
