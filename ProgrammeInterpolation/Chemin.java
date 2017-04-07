@@ -56,7 +56,6 @@ class Chemin{
 				f.println(i.getx() + " " + i.gety() + " " + i.getz()); // on place chaque élément du chemin dans le fichier
 			}
 			f.close();
-			System.out.println(Energie()); // puis on affiche l'énergie requise
 		}
 		catch(FileNotFoundException e){}
 	}
