@@ -1,6 +1,20 @@
 public class Velo {
+  
+  public Velo(double p, double v, double t){
+    poids=p;
+    vitessemax=v;
+    batterie=b;
+  }
+  
+  public double getPoids(){
+		return poids;
+	}
+	
+	public double getVLim(){
+		return vitessemax;
+	}
 
-  private final int poids; //en kg
-  private final int vitessemax; // en km/h
-  private final int batterie; // en Watts
+  private final double poids; //en kg
+  private final double vitessemax; // en km/h
+  private final double batterie; // en Watts
 }
