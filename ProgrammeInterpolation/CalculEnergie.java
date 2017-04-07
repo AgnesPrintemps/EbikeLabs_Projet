@@ -19,6 +19,8 @@ class CalculEnergie{
 		System.out.println("Entrez la direction du vent");
 		int d=sc.nextInt();
 		Vent v=new Vent(d,vit); // le vent
+		System.out.println("Entrez la température");
+		double t=sc.nextDouble(); // la température
 		System.out.println("Entrez le nom du cycliste");
 		String nom=sc.nextString();
 		System.out.println("Entrez le poids du cycliste");
@@ -33,7 +35,7 @@ class CalculEnergie{
 		double vmax=sc.nextDouble();
 		System.out.println("Entrez la batterie du vélo");
 		double bat=sc.nextDouble();
-		Velo velo=new Velo(poidsv,vmax,bat); // le vélo
+		Velo velo=new Velo(poidsv,vmax,bat);
 		Cycliste cycliste=new Cycliste(nom,poidsc,velo,taille,aire); // le cycliste
 		
 		Chemin c=new Chemin(args[0], v, cycliste, t);
