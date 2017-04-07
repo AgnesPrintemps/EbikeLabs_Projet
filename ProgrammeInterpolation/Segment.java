@@ -28,7 +28,7 @@ class Segment{
 		
 		double massevolu = 1.292*273.15/(273.15+temperature);
 		
-		double airefron = cycliste.aireFron();
+		double airefron = cycliste.getAireFron();
 		
 		double resAira = 0.5*massevolu*airefron*Cxa;
 		double resAirb = 0.5*massevolu*airefron*Cxb;
@@ -42,7 +42,7 @@ class Segment{
 		return new Point(Fra*vitesse,Frb*vitesse);
 	}
 	
-	/** retourne le coefficient de frottement de l'air de al route en fonction du vent
+	/** retourne le coefficient de frottement de l'air de la route en fonction du vent
 	 * @return le coefficient de frottement de l'air
 	 */
 	public double getFrottement(){
