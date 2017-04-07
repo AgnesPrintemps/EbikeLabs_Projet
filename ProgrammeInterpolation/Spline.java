@@ -40,11 +40,11 @@ class Spline{
 				Polynome3 H0=new Polynome3(2,-3,0,1); // on cree le polynome de hermite 0
 				H0=H0.mult(a.gety()); // et on le multiplie par y_a
 				Polynome3 H1=new Polynome3(1,-2,1,0); // on cree le polynome de hermite 1
-				H1=H1.mult(a.getz()).mult(b.getx()-a.getx()); // et on le multiplie par yprime_a, puis x_b-x_a
+				H1=H1.mult(a.getyprime()).mult(b.getx()-a.getx()); // et on le multiplie par yprime_a, puis x_b-x_a
 				Polynome3 H2=new Polynome3(-2,3,0,0); // on cree le polynome de hermite 2
 				H2=H2.mult(b.gety()); // et on le multiplie par y_b
 				Polynome3 H3=new Polynome3(1,-1,0,0); // on cree le polynome de hermite 3
-				H3=H3.mult(b.getz()).mult(b.getx()-a.getx()); // et on le multiplie par yprime_b, puis x_b-x_a
+				H3=H3.mult(b.getyprime()).mult(b.getx()-a.getx()); // et on le multiplie par yprime_b, puis x_b-x_a
 				Polynome3 p=H0.add(H1).add(H2).add(H3); // on fait la somme des 4 polynomes
 				p=p.transAff(1/(b.getx()-a.getx()),-a.getx()/(b.getx()-a.getx())); // et on l'applique à (x-x_0)/(x_1-x_0), soit x * 1/(x_1-x_0) - x_0/(x_1-x_0) 
 				return (new Restriction(p,a.getx(),b.getx())); // et on retourne ce polynome restreint à [x_0, x_1]
