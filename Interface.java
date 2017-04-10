@@ -4,6 +4,11 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,7 +32,7 @@ public class ApplicationEbike extends JFrame implements ActionListener{
 	private JTextField T8;
 	private JTextField T9;
 	private JTextField T10;
-	private JLabel L1;
+	private JLabel L1;						
 	private JLabel L2;
 	private JLabel L3;
 	private JLabel L4;
@@ -47,12 +52,20 @@ public class ApplicationEbike extends JFrame implements ActionListener{
 	private static String S8;
 	private static String S9;
 	private static String S10;
-	
+	private ArrayList<String> element ;
 	private final static String newline = "\n";
+	private boolean attente= true;
 	
 	public ApplicationEbike() {
 		
-
+	Scanner sc = new Scanner(System.in);		
+	System.out.println("Quel est votre nom ?");
+	String str = sc.nextLine();
+	System.out.println("Vous avez saisi : " + str);
+	File nom= new File(str);
+	element = new ArrayList<String>();
+	if(!nom.exists()){
+	
 		JFrame Fen = new JFrame();
 		Fen.setTitle("Project Ebike");
 		//Fen.setSize(1700, 1000);
@@ -124,24 +137,59 @@ public class ApplicationEbike extends JFrame implements ActionListener{
 		T10.addActionListener(this);
 		
 		Fen.setVisible(true);
+		
+		BufferedWriter b;
+		while(attente){
 			
+		}
+		System.out.println("apres le while " + attente);
+		try{
+			b= new BufferedWriter(new FileWriter(new File(str)));
+			for(int i= 0; i<=element.size(); i++){
+				b.write(element.get(i));
+				b.newLine();							
+			}
+		b.close();
+		}	
+		catch(Exception e){
+		System.out.println("coucou "+e);
+		}
+	}	
+	else{
+		
+	
 	}
+}
 
+	
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		   
+		    attente = true;
 		    S1 = T1.getText();
+		    element.add(S1);
 		    S2 = T2.getText();
+		    element.add(S2);
 		    S3 = T3.getText();
+		    element.add(S3);
 		    S4 = T4.getText();
+		    element.add(S4);
 		    S5 = T5.getText();
+		    element.add(S5);
 		    S6 = T6.getText();
+		    element.add(S6);
 		    S7 = T7.getText();
+		    element.add(S7);
 		    S8 = T8.getText();
+		    element.add(S8);
 		    S9 = T9.getText();
+		    element.add(S9);
 		    S10 = T10.getText();
+		    element.add(S10);
+		    attente = false;
+		    System.out.println("dans le action performed " + attente);
 		    double P = Puissance();
 		    System.out.println("La puissance nécessaire est de : " + P);
+		   
 		}
 	
 	
