@@ -4,9 +4,9 @@ import java.util.Scanner;
 public class Vent {
 
 	private String direction;
-	private int force;
+	private double force;
 	
-	public Vent (int d, int f){
+	public Vent (int d, double f){
 		switch(d){
 			case 1 : direction = "Nord"; break;
 			case 2 : direction = "Nord-Nord-Ouest"; break;
@@ -25,7 +25,7 @@ public class Vent {
 			case 14 : direction = "Nord-Est"; break;
 			case 15 : direction = "Nord-Nord-Est"; break;
 		}
-		force =f;
+		force = f;
 	}
 	
 	
