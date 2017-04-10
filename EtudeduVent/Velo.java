@@ -1,26 +1,32 @@
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
 public class Velo {
 	
-	public Velo(file f){
+	public Velo(File f){
    	 	try{
 			Scanner sc=new Scanner(f);
 			String temp = sc.nextLine();
-			poids=Double.parseDouble(temp);
+			poids = Double.parseDouble(temp);
 			temp = sc.nextLine();
-			vitessemax=Double.parseDouble(temp);
+			vitessemax = Double.parseDouble(temp);
 			temp = sc.nextLine();
-			batterie=Double.parseDouble(temp);
+			batterie = Double.parseDouble(temp);
+			sc.close();
 		}
-		catch(FileNotFoundException e){}
-		sc.close()
-  	}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+	}
   
-	public Velo(double p, double v, double t){
-    		poids=p;
-    		vitessemax=v;
-   		batterie=b;
- 	}
+  public Velo(double p, double v, double b){
+    poids=p;
+    vitessemax=v;
+    batterie=b;
+  }
   
-  	public double getPoids(){
+  public double getPoids(){
 		return poids;
 	}
 	
@@ -28,7 +34,7 @@ public class Velo {
 		return vitessemax;
 	}
 
-  	private final double poids; //en kg
-  	private final double vitessemax; // en km/h
-  	private final double batterie; // en Watts
+  private final double poids; //en kg
+  private final double vitessemax; // en km/h
+  private final double batterie; // en Watts
 }
