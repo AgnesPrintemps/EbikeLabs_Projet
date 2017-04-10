@@ -36,7 +36,7 @@ class CalculEnergie{
 		System.out.println("Entrez la batterie du vélo");
 		double bat=sc.nextDouble();
 		Velo velo=new Velo(poidsv,vmax,bat);
-		Cycliste cycliste=new Cycliste(nom,poidsc,velo,taille,aire); // le cycliste
+		Cycliste cycliste=new Cycliste(nom,taille,poidsc,aire,velo); // le cycliste
 		
 		Chemin c=new Chemin(args[0], v, cycliste, t);
 		c.put(args[1]);
