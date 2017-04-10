@@ -39,9 +39,8 @@ class Segment{
 
 		double Fra = resPes+resAira;
 		double Frb = resAirb+resFrot;
-		double vitesse = 12;
 		
-		return new Point(Fra*vitesse,Frb*vitesse);
+		return new Point(Fra*Vs,Frb*Vs);
 	}
 	
 	/** retourne le coefficient de frottement de l'air de la route en fonction du vent
@@ -57,7 +56,7 @@ class Segment{
 	public double getVitesseVent(){
 		a1=Math.atan(fin.getx()-debut.getx)/(fin.getx()-debut.getx));
 		a2=v.getAngle();
-		return min(longeur()-math.cos(a1+a2)*v.getVitesse,0);
+		return min(cycliste.getVLim()-math.cos((a1+a2) % mod(2*pi))*v.getVitesse,0);
 	}
 			
 	/** retourne la longeur du chemin
