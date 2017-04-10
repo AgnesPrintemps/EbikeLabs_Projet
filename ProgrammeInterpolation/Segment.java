@@ -30,8 +30,10 @@ class Segment{
 		
 		double airefron = cycliste.getAireFron();
 		
-		double resAira = 0.5*massevolu*airefron*Cxa;
-		double resAirb = 0.5*massevolu*airefron*Cxb;
+		double vVent = getVitesseVent();
+		
+		double resAira = 0.5*massevolu*airefron*Cxa*pow(vVent,2);
+		double resAirb = 0.5*massevolu*airefron*Cxb*pow(vVent,2);
 		
 		double resFrot = m*g*f;
 
@@ -46,7 +48,23 @@ class Segment{
 	 * @return le coefficient de frottement de l'air
 	 */
 	public double getFrottement(){
-		 return 0.01; // valeur arbitraire
+		 return 0.01; // valeur arbitraire, a determiner experimentalement
+	}
+	
+	/** retourne la vitesse du vent par rapport au cycliste
+	 * @return la vitesse du vent par rapport au cycliste
+	 */
+	public double getVitesseVent(){
+		a1=Math.atan(fin.getx()-debut.getx)/(fin.getx()-debut.getx));
+		a2=v.getAngle();
+		return min(longeur()-math.cos(a1+a2)*v.getVitesse,0);
+	}
+			
+	/** retourne la longeur du chemin
+	 * @return la longeur du chemin
+	 */
+	public double longeur(){
+		return Point.distance(debut,fin);
 	}
 	
 	private Point debut;
