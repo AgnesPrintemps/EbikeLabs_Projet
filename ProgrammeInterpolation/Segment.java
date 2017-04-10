@@ -56,7 +56,7 @@ class Segment{
 	public double getVitesseVent(){
 		a1=Math.atan(fin.getx()-debut.getx)/(fin.getx()-debut.getx));
 		a2=v.getAngle();
-		return min(cycliste.getVLim()-math.cos((a1+a2) % mod(2*pi))*v.getVitesse,0);
+		return cycliste.getVLim()-math.cos((a1+a2) % mod(2*pi))*v.getVitesse);
 	}
 			
 	/** retourne la longeur du chemin
