@@ -1,11 +1,26 @@
 public class Cycliste {
 	
-	public Cycliste(String n, double p, Velo v, double t, double a){
-    		nom=n;
-    		poids=p;
+	public Cycliste(File f, Velo v){
 		velo=v;
-    		talle=t;
+    		try{
+			Scanner sc=new Scanner(f);
+			nom = sc.nextLine();
+			String temp = sc.nextLine();
+			taille=Double.parseDouble(temp);
+			temp = sc.nextLine();
+			poids=Double.parseDouble(temp);
+			temp = sc.nextLine();
+			aireFrontale=Double.parseDouble(temp);
+		}
+		catch(FileNotFoundException e){}
+  	}
+	
+	public Cycliste(String n, double t, double p, double a, Velo v){
+    		nom=n;
+		talle=t;
+    		poids=p;
 		aireFrontale=a;
+		velo=v;
   	}
 	
 	public double getPoids(){
@@ -21,9 +36,9 @@ public class Cycliste {
 	}
 
 	private String nom;
-	private double poids; // en kg
-	private Velo velo;
+	private double poids; // en k
 	private double taille; // en cm
 	private double aireFrontale;
+	private Velo velo;
 
 }
