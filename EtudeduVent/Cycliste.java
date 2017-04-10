@@ -6,7 +6,7 @@ public class Cycliste {
 			Scanner sc=new Scanner(f);
 			nom = sc.nextLine();
 			String temp = sc.nextLine();
-			taille=Double.parseDouble(temp);
+			taille = Double.parseDouble(temp);
 			temp = sc.nextLine();
 			poids=Double.parseDouble(temp);
 			temp = sc.nextLine();
