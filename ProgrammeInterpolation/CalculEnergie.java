@@ -1,6 +1,9 @@
+import java.io.File;
+import java.util.Scanner;
+
 class CalculEnergie{
 	
-	public static void RecupererDonneesGPS(File f,Point a, Point b){}// fonction théorique qui place dans le fichier f les données	
+	public static void RecupererDonneesGPS(File f, Point a, Point b){}// fonction théorique qui place dans le fichier f les données	
 	
 	// argument 1: le fichier d'entree
 	// argument 2: le fichier de sortie (pas forcément nécessaire mais utile pour les tests
@@ -13,7 +16,7 @@ class CalculEnergie{
 		System.out.println("Entrez les coordonées du point de d'arivée");
 		double ax=sc.nextDouble();
 		double ay=sc.nextDouble();
-		RecupererDonneesGPS(new File(args[0]), new Point(dx,dy), new Point(ax,ay));
+		RecupererDonneesGPS(new File(args[0]),new Point(dx,dy), new Point(ax,ay));
 		System.out.println("Entrez la vitesse du vent");
 		double vit=sc.nextDouble();
 		System.out.println("Entrez la direction du vent");
@@ -36,7 +39,7 @@ class CalculEnergie{
 		System.out.println("Entrez la batterie du vélo");
 		double bat=sc.nextDouble();
 		Velo velo=new Velo(poidsv,vmax,bat);
-		Cycliste cycliste=new Cycliste(nom,taille,poidsc,aire,velo); // le cycliste
+		Cycliste cycliste=new Cycliste(nom,poidsc,velo,taille,aire); // le cycliste
 		
 		Chemin c=new Chemin(args[0], v, cycliste, t);
 		c.put(args[1]);
