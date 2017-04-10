@@ -1,8 +1,12 @@
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
 public class Cycliste {
 	
 	public Cycliste(File f, Velo v){
 		velo=v;
-    		try{
+    	try{
 			Scanner sc=new Scanner(f);
 			nom = sc.nextLine();
 			String temp = sc.nextLine();
@@ -12,15 +16,17 @@ public class Cycliste {
 			temp = sc.nextLine();
 			aireFrontale=Double.parseDouble(temp);
 		}
-		catch(FileNotFoundException e){}
-  	}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+	}
 	
-	public Cycliste(String n, double t, double p, double a, Velo v){
-    		nom=n;
-		talle=t;
-    		poids=p;
-		aireFrontale=a;
+	public Cycliste(String n, double p, Velo v, double t, double a){
+    	nom=n;
+    	poids=p;
 		velo=v;
+    	taille=t;
+		aireFrontale=a;
   	}
 	
 	public double getPoids(){
@@ -36,9 +42,9 @@ public class Cycliste {
 	}
 
 	private String nom;
-	private double poids; // en k
+	private double poids; // en kg
+	private Velo velo;
 	private double taille; // en cm
 	private double aireFrontale;
-	private Velo velo;
 
 }
