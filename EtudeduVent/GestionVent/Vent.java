@@ -6,6 +6,11 @@ public class Vent {
 	private String direction;
 	private double force;
 	
+	public Vent (String d, double f){
+		direction = d;
+		force = f;
+	}
+	
 	public Vent (int d, double f){
 		switch(d){
 			case 1 : direction = "Nord"; break;
