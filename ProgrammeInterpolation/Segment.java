@@ -19,7 +19,7 @@ class Segment{
 	public Point parametres(){
 		
 		double f = getFrottement();
-		double m = cycliste.getPoids()
+		double m = cycliste.getPoids();
 		double Vs = cycliste.getVLim();
 		double Cxa = 324*m/250/(Vs*Vs);
 		double Cxb = f*Cxa;
