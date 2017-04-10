@@ -32,8 +32,8 @@ class Segment{
 		
 		double vVent = getVitesseVent();
 		
-		double resAira = 0.5*massevolu*airefron*Cxa*pow(vVent,2);
-		double resAirb = 0.5*massevolu*airefron*Cxb*pow(vVent,2);
+		double resAira = max(0.5*massevolu*airefron*Cxa*pow(vVent,2),0);
+		double resAirb = max(0.5*massevolu*airefron*Cxb*pow(vVent,2),0);
 		
 		double resFrot = m*g*f;
 
