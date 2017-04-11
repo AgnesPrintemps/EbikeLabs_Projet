@@ -7,7 +7,7 @@ public class Vent {
 	private String direction;
 	private double vitesse;
 	
-	public Vent(string d, double v){
+	public Vent(String d, double v){
 		direction=d;
 		vitesse=v;
 	}
