@@ -42,22 +42,23 @@ public class ApplicationEbike{
 	private static String S4;
 	private static String S5;
 	private final static String newline = "\n";
-	private final static File donnees = new File("données");
+	private final static File donnees = new File("donnees.txt");
 	private static int nfen=1;
 	private boolean attente= true;
+	private static String nomCycliste;
 	
-	private Velo velo;
-	private Cycliste cycliste;
+	private static Velo velo;
+	private static Cycliste cycliste;
 	
-	public ApplicationEbike(){
+	public ApplicationEbike() {
 		
 		JFrame Fen = new JFrame();
 		Fen.setTitle("Project Ebike");
 		bouton=new JButton("Suite");
 		bouton.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
-				Fen.dispose();
 				suite();
+				Fen.dispose();
 			} 
 		} );
 		
@@ -156,12 +157,14 @@ public class ApplicationEbike{
 		switch (nfen){
 			case 1:
 				S1 = T1.getText();
+				nomCycliste=S1;
 				S2 = T2.getText();
-				File nom= new File(S1);
+				S2 = S2 + ".txt";
+				File nom= new File(nomCycliste+".txt");
 				File nomVelo= new File(S2);
 				velo=new Velo(nomVelo);
 				if(nom.exists()){
-					cycliste= new Cycliste(nom,velo);
+					cycliste=new Cycliste(nom,velo);
 					nfen=3;
 				}
 				else{
@@ -170,19 +173,19 @@ public class ApplicationEbike{
 				new ApplicationEbike();
 				break;		
 			case 2:
-				nom=new File(S1);
+				nom=new File(nomCycliste+".txt");
 				S1 = T1.getText();
 				S2 = T2.getText();
 				S3 = T3.getText();
 				try{
 					BufferedWriter b= new BufferedWriter(new FileWriter(nom));
-					
+					b.write(nomCycliste);
+					b.newLine();
 					b.write(S1);
 					b.newLine();
 					b.write(S2);
 					b.newLine();
-					b.write(S3);
-					b.newLine();							
+					b.write(S3);						
 					b.close();
 				}	
 				catch(Exception e){}
@@ -203,9 +206,9 @@ public class ApplicationEbike{
 				Point arr = new Point(Double.parseDouble(coora[0]),Double.parseDouble(coora[1]));
 				
 				RecupererDonneesGPS(donnees,dep,arr);
-				Vent vent=new Vent(Integer.parseInt(S4),Double.parseDouble(S3));
+				Vent vent=new Vent(S4,Double.parseDouble(S3));
 				Chemin c=new Chemin(donnees, vent, cycliste, Double.parseDouble(S5));
-				System.out.println("L'energie requise sur ce chemin est" + c.energie());
+				System.out.println("L'energie requise sur ce chemin est " + c.energie());
 		}
 	}
 }

@@ -12,7 +12,7 @@ public class Cycliste {
 			String temp = sc.nextLine();
 			taille = Double.parseDouble(temp);
 			temp = sc.nextLine();
-			poids=Double.parseDouble(temp);
+			poids = Double.parseDouble(temp);
 			temp = sc.nextLine();
 			aireFrontale=Double.parseDouble(temp);
 		}
