@@ -18,7 +18,7 @@ import javax.swing.JButton;
 
 
 
-public class ApplicationEbike extends JFrame{
+public class ApplicationEbike{
 	
 	public static void RecupererDonneesGPS(File f, Point a, Point b){}// fonction théorique qui place dans le fichier f les données	
 	/**
@@ -56,6 +56,7 @@ public class ApplicationEbike extends JFrame{
 		bouton=new JButton("Suite");
 		bouton.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) { 
+				Fen.dispose();
 				suite();
 			} 
 		} );
@@ -165,8 +166,7 @@ public class ApplicationEbike extends JFrame{
 				}
 				else{
 					nfen=2;
-				}
-				super.dispose();			
+				}			
 				new ApplicationEbike();
 				break;		
 			case 2:
@@ -188,7 +188,6 @@ public class ApplicationEbike extends JFrame{
 				catch(Exception e){}
 				cycliste=new Cycliste(nom,velo);
 				nfen=3;
-				dispose();
 				new ApplicationEbike();
 				break;
 			case 3:
