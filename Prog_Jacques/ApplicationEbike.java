@@ -17,7 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 
-
 public class ApplicationEbike{
 	
 	public static void RecupererDonneesGPS(File f, Point a, Point b){}// fonction théorique qui place dans le fichier f les données	
@@ -45,8 +44,8 @@ public class ApplicationEbike{
 	private final static File donnees = new File("donnees.txt");
 	private static int nfen=1;
 	private boolean attente= true;
-	private static String nomCycliste;
 	
+	private static File nom;
 	private static Velo velo;
 	private static Cycliste cycliste;
 	
@@ -157,10 +156,10 @@ public class ApplicationEbike{
 		switch (nfen){
 			case 1:
 				S1 = T1.getText();
-				nomCycliste=S1;
+				S1 = S1 + ".txt";
 				S2 = T2.getText();
 				S2 = S2 + ".txt";
-				File nom= new File(nomCycliste+".txt");
+				nom = new File(S1);
 				File nomVelo= new File(S2);
 				velo=new Velo(nomVelo);
 				if(nom.exists()){
@@ -173,14 +172,11 @@ public class ApplicationEbike{
 				new ApplicationEbike();
 				break;		
 			case 2:
-				nom=new File(nomCycliste+".txt");
 				S1 = T1.getText();
 				S2 = T2.getText();
 				S3 = T3.getText();
 				try{
 					BufferedWriter b= new BufferedWriter(new FileWriter(nom));
-					b.write(nomCycliste);
-					b.newLine();
 					b.write(S1);
 					b.newLine();
 					b.write(S2);

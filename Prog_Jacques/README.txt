@@ -1,10 +1,10 @@
 Pour utiliser ce programme:
-- compilez InterpolationSpline.java
-- exectutez InterpolationSpline avec:
-	- le nom du fichier contenant les données GPS
-	- le nom du fichier dans lequel vous voulez afficher les pentes
+- compilez et executez
+- utilisez Velo1 comme nom de vélo, ou créez votre propre fichier de vélo
+- toujours mettre .0 apres chaque nombre entier
+- les points de départ et d'arivée sont inutiles pour l'instant, mais doivent tout de meme etre rentrés et séparés par une virgule
+- utilises les initiales des points cardinaux (N, S, NE, etc) pour la direction du vent
 
-Puis, le terminal affichera l'energie requise au cours de chemin
-et le fichier cible aura la pente et l'altitude à chaque point du trajet
-
-Point.java contient une fonction polToCart() qui donne les coordonées cartésiennes d'un point en coordonées polaires
+Il reste à finir:
+- la fonction RecupererDonneesGPS(f,a,b) qui récupère les données GPS du chemin entre les points a et b et les place dans le fichier f
+- la fonction getFrottement() qui donne le coefficient de frottement de l'air

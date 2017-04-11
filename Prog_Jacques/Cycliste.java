@@ -8,7 +8,6 @@ public class Cycliste {
 		velo=v;
     	try{
 			Scanner sc=new Scanner(f);
-			nom = sc.nextLine();
 			String temp = sc.nextLine();
 			taille = Double.parseDouble(temp);
 			temp = sc.nextLine();
@@ -21,8 +20,7 @@ public class Cycliste {
 		}
 	}
 	
-	public Cycliste(String n, double p, Velo v, double t, double a){
-    	nom=n;
+	public Cycliste(double p, Velo v, double t, double a){
     	poids=p;
 		velo=v;
     	taille=t;
@@ -41,7 +39,6 @@ public class Cycliste {
 		return aireFrontale;
 	}
 
-	private String nom;
 	private double poids; // en kg
 	private Velo velo;
 	private double taille; // en cm

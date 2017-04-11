@@ -32,8 +32,8 @@ class Segment{
 		
 		double vVent = getVitesseVent();
 		
-		double resAira = Math.max(0.5*massevolu*airefron*Cxa*Math.pow(vVent,2),0);
-		double resAirb = Math.max(0.5*massevolu*airefron*Cxb*Math.pow(vVent,2),0);
+		double resAira = 0.5*massevolu*airefron*Cxa*vVent*Math.abs(vVent);
+		double resAirb = 0.5*massevolu*airefron*Cxb*vVent*Math.abs(vVent);
 		
 		double resFrot = m*g*f;
 
@@ -46,7 +46,7 @@ class Segment{
 	/** retourne le coefficient de frottement de l'air de la route en fonction du vent
 	 * @return le coefficient de frottement de l'air
 	 */
-	public double getFrottement(){
+	public static double getFrottement(){
 		 return 0.01; // valeur arbitraire, a determiner experimentalement
 	}
 	
