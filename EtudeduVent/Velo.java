@@ -34,7 +34,7 @@ public class Velo {
 		return vitessemax;
 	}
 
-  private final double poids; //en kg
-  private final double vitessemax; // en km/h
-  private final double batterie; // en Watts
+  private double poids; //en kg
+  private double vitessemax; // en km/h
+  private double batterie; // en Watts
 }
