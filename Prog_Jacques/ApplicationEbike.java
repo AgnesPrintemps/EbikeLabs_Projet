@@ -60,9 +60,11 @@ public class ApplicationEbike extends JFrame{
 			} 
 		} );
 		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		switch (nfen){
 			case 1:
-				Fen.setSize(1000, 600);
+				Fen.setSize(500, 150);
 				Fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Fen.setLocationRelativeTo(null);
 				Fen.setLayout(new GridLayout(5, 4));
@@ -82,7 +84,7 @@ public class ApplicationEbike extends JFrame{
 				Fen.getContentPane().add(T2);
 				break;
 			case 2:
-				Fen.setSize(1000, 600);
+				Fen.setSize(500, 210);
 				Fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Fen.setLocationRelativeTo(null);	
 				Fen.setLayout(new GridLayout(7, 4));
@@ -108,7 +110,7 @@ public class ApplicationEbike extends JFrame{
 				
 				break;
 			case 3:
-				Fen.setSize(1000, 600);
+				Fen.setSize(500, 330);
 				Fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Fen.setLocationRelativeTo(null);	
 				Fen.setLayout(new GridLayout(11, 4));
@@ -163,8 +165,8 @@ public class ApplicationEbike extends JFrame{
 				}
 				else{
 					nfen=2;
-				}			
-				dispose();
+				}
+				super.dispose();			
 				new ApplicationEbike();
 				break;		
 			case 2:
@@ -184,8 +186,9 @@ public class ApplicationEbike extends JFrame{
 					b.close();
 				}	
 				catch(Exception e){}
-				cycliste= new Cycliste(nom,velo);
+				cycliste=new Cycliste(nom,velo);
 				nfen=3;
+				dispose();
 				new ApplicationEbike();
 				break;
 			case 3:
@@ -205,6 +208,5 @@ public class ApplicationEbike extends JFrame{
 				Chemin c=new Chemin(donnees, vent, cycliste, Double.parseDouble(S5));
 				System.out.println("L'energie requise sur ce chemin est" + c.energie());
 		}
-		dispose();
 	}
 }
