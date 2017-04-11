@@ -49,7 +49,7 @@ public class ApplicationEbike{
 	private Velo velo;
 	private Cycliste cycliste;
 	
-	public ApplicationEbike() {
+	public ApplicationEbike(){
 		
 		JFrame Fen = new JFrame();
 		Fen.setTitle("Project Ebike");
@@ -61,7 +61,7 @@ public class ApplicationEbike{
 			} 
 		} );
 		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		switch (nfen){
 			case 1:
