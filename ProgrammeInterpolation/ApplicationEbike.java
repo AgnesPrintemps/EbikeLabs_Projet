@@ -145,7 +145,7 @@ public class ApplicationEbike extends JFrame{
 
 				break;
 		}
-		
+		Fen.getContentPane().add(bouton);
 		Fen.setVisible(true);
 	}	
 	
