@@ -204,7 +204,7 @@ public class ApplicationEbike{
 				RecupererDonneesGPS(donnees,dep,arr);
 				Vent vent=new Vent(S4,Double.parseDouble(S3));
 				Chemin c=new Chemin(donnees, vent, cycliste, Double.parseDouble(S5));
-				System.out.println("L'energie requise sur ce chemin est " + c.energie());
+				System.out.println("L'energie requise sur ce chemin est " + c.energie()/36000000 + " kWh");
 		}
 	}
 }
