@@ -38,7 +38,7 @@ public class DonneesGPS {
 		catch(FileNotFoundException e){
 			e.printStackTrace();
 		}
-		
+		spherToCart();
 		
 	}
 	
@@ -77,7 +77,7 @@ public class DonneesGPS {
 	    double latitude2 = convertToRad(lat_2);
 	    double longitude2 = convertToRad(long_2);
 	     
-	    return RayonTerre * (Math.PI/2 - Math.asin( Math.sin(latitude2) * Math.sin(latitude1) + Math.cos(longitude2 - longitude1) * Math.cos(latitude2) * Math.cos(latitude1)));
+	    return RayonTerre * (Math.PI/2 - Math.asin(Math.sin(latitude2) * Math.sin(latitude1) + Math.cos(longitude2 - longitude1) * Math.cos(latitude2) * Math.cos(latitude1)));
 
 	}
 	
@@ -85,15 +85,13 @@ public class DonneesGPS {
 		return RayonTerre;
 	}
 	
-	// a partir de la liste de coordonées sphériques, courante, retourne une liste de coordonées cartésienne
-	public static double[][] spherToCart(double[][] s){
-		double[][] c=new double[3][100];
+	// transforme les coordonées sphériques en coordonées cartésiennes
+	public void spherToCart(){
 		for (int i=0; i<100; i++){
-			c[1][i]=s[1][i]*RayonTerre;
-			c[2][i]=s[2][i]*RayonTerre;
-			c[3][i]=c[3][i]-RayonTerre;
+			coordonnees[0][i]*=RayonTerre;
+			coordonnees[1][i]*=RayonTerre;
+			altitude[i]-=RayonTerre;
 		}
-		return c;
 	}
 	
 }
