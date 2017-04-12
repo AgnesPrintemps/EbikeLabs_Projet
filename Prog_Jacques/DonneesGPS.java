@@ -90,7 +90,6 @@ public class DonneesGPS {
 		for (int i=0; i<100; i++){
 			coordonnees[0][i]*=RayonTerre;
 			coordonnees[1][i]*=RayonTerre;
-			altitude[i]-=RayonTerre;
 		}
 	}
 	
