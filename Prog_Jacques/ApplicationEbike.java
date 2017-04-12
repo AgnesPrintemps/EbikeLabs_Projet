@@ -130,9 +130,9 @@ public class ApplicationEbike{
 				
 				L1 = new JLabel("Quelles sont les coordonées de votre point de depart? ");
 				L2 = new JLabel("Quelles sont les coordonées de votre point d'arivée? ");
-				L3 = new JLabel("Quelle est la vitesse du vent?");
+				L3 = new JLabel("Quelle est la vitesse du vent en m/s?");
 				L4 = new JLabel("Quelle est la direction du vent?");
-				L5 = new JLabel("Quelle est la température?");
+				L5 = new JLabel("Quelle est la température en °C?");
 				
 				Fen.getContentPane().add(L1);
 				Fen.getContentPane().add(T1);
