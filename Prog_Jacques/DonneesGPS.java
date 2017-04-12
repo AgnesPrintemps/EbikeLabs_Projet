@@ -11,11 +11,12 @@ public class DonneesGPS {
 	private double distancecumulee;
 	private int TailleEchantillon;
 	private static final int RayonTerre = 6378000; // en mètres
+	private static final int maxDonnees = 100;
 	
 	public DonneesGPS(File f){
 		try{
-			coordonnees = new double[2][100];
-			altitude = new double[100];
+			coordonnees = new double[2][maxDonnees];
+			altitude = new double[maxDonnees];
 			Scanner sc=new Scanner(f);
 			int i=0;
 			while(sc.hasNextLine()){ // tant qu'il reste encore des réels dans le fichier
@@ -87,7 +88,7 @@ public class DonneesGPS {
 	
 	// transforme les coordonées sphériques en coordonées cartésiennes
 	public void spherToCart(){
-		for (int i=0; i<100; i++){
+		for (int i=0; i<maxDonnees; i++){
 			coordonnees[0][i]*=RayonTerre;
 			coordonnees[1][i]*=RayonTerre;
 		}
