@@ -1,5 +1,5 @@
 Pour utiliser ce programme:
-- compilez et executez
+- compilez et executez TestInterface.java
 - utilisez Velo1 comme nom de vélo, ou créez votre propre fichier de vélo
 - toujours mettre .0 apres chaque nombre entier
 - les points de départ et d'arivée sont inutiles pour l'instant, mais doivent tout de meme etre rentrés et séparés par une virgule
