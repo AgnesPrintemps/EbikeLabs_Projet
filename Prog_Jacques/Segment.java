@@ -15,17 +15,18 @@ class Segment{
 	 * @return un point p correspondant aux conditions de la route tel que
 	 *	-p.gety() est l'énergie instantanée nécessaire sur une route d'exactement 45°
 	 * 	-p.getx() + p.gety() est l'énergie instantanée nécessaire sur une route d'exactement 45°
-	 *	-p.getx()*p + p.gety() est l'énergie instantanée nécessaire pour une pente de p
 	 */
 	public Point parametres(){
+		
+		// o,n m'assure que ces calculs sont corrects
 		
 		double f = getFrottement();
 		double m = cycliste.getPoids();
 		double Vs = cycliste.getVLim();
-		double Cxa = 324*m/250/(Vs*Vs); // en fonction de la pente
+		double Cxa = 324*m/250/(Vs*Vs);
 		double Cxb = f*Cxa;
 		
-		double resPes = m*g;  // en fonction de la pente
+		double resPes = m*g;
 		
 		double massevolu = 1.292*273.15/(273.15+temperature);
 		
@@ -33,12 +34,12 @@ class Segment{
 		
 		double vVent = getVitesseVent();
 		
-		double resAirb = 0.5*massevolu*airefron*Cxb*vVent*Math.abs(vVent); // energie negative si le vent nous pousse
-		double resAira = 0.5*massevolu*airefron*Cxa*vVent*Math.abs(vVent); // en fonction de la pente
+		double resAira = 0.5*massevolu*airefron*Cxa*vVent*Math.abs(vVent);
+		double resAirb = 0.5*massevolu*airefron*Cxb*vVent*Math.abs(vVent);
 		
 		double resFrot = m*g*f;
 
-		double Fra = resPes+resAira;  // en fonction de la pente
+		double Fra = resPes+resAira;
 		double Frb = resAirb+resFrot;
 		
 		return new Point(Fra*Vs,Frb*Vs);
@@ -48,14 +49,14 @@ class Segment{
 	 * @return le coefficient de frottement de l'air
 	 */
 	public static double getFrottement(){
-		 return 0.01; // valeur arbitraire, a determiner experimentalement
+		 return 0.013; // valeur arbitraire, a determiner experimentalement
 	}
 	
 	/** retourne la vitesse du vent par rapport au cycliste
 	 * @return la vitesse du vent par rapport au cycliste
 	 */
 	public double getVitesseVent(){
-		// calcul trigonmoétrique ennuyeux
+		// calcul trigonometrique ennuyeux
 		double a1=Math.atan((fin.gety()-debut.gety())/(fin.getx()-debut.getx()));
 		double a2=vent.getAngle();
 		return (cycliste.getVLim()-Math.cos((a1+a2) % (2*Math.PI))*vent.getVitesse());
