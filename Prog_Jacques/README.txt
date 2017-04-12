@@ -4,6 +4,7 @@ Pour utiliser ce programme:
 - toujours mettre .0 apres chaque nombre entier
 - les points de départ et d'arivée sont inutiles pour l'instant, mais doivent tout de meme etre rentrés et séparés par une virgule
 - utilises les initiales des points cardinaux (N, S, NE, etc) pour la direction du vent
+- vitesse du vent ainsi que vitesse limite du vélo en m/s
 
 Il reste à finir:
 - la fonction RecupererDonneesGPS(f,a,b) qui récupère les données GPS du chemin entre les points a et b et les place dans le fichier f
